@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.text.DecimalFormat;
+
 public class WidgetFactory {
 
     /*
@@ -28,4 +31,33 @@ public class WidgetFactory {
      Profit: $760.00
 
      */
+
+
+    public static void main(String[] args) {
+        double numWidgets = getInput("Enter the number of widgets");
+        int days = Integer.parseInt(JOptionPane.showInputDialog("Days worked?"));
+        double pay = 16.50;
+        double hours = days * 8;
+        double coP = pay * hours * 10;
+        double coW = numWidgets * 10;
+        double profit = coW - coP;
+
+        DecimalFormat round = new DecimalFormat("##,###.##");
+        JOptionPane.showMessageDialog(null, "\nNumber of Widgets: "+numWidgets+
+                "\nNumber of Days: "+days+
+                "\nCost of Widgets: $ "+round.format(coW)+
+                "\nCost of Production: $ "+round.format(coP)+
+                "\nProfit: $ "+round.format(profit));
+
+        System.exit(0);
+    }
+    public static double getInput (String message){
+        return Double.parseDouble(JOptionPane.showInputDialog(message));
+    }
+
+
+
+
+
+
 }
